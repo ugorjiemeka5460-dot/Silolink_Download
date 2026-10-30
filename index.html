@@ -2,133 +2,282 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SiloLink — Download the app</title>
-  <meta name="description" content="SiloLink agritech app for market, storage, jobs, logistics and chat. Download the Android test APK." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SiloLink — Download</title>
+  <meta name="description" content="SiloLink — agritech for market, storage, jobs, logistics and chat. Download the Android test app." />
   <style>
     :root {
-      --bg: #0f1410; --panel: #1a221c; --line: #2a362e; --paper: #f2f5f0;
-      --muted: #9aa896; --gold: #d4a017; --sage: #6b9b6e; --ink: #1a1508;
+      --bg: #0c100e;
+      --panel: #161e19;
+      --panel2: #1c2620;
+      --line: #2a362e;
+      --paper: #f2f5f0;
+      --muted: #9aa896;
+      --gold: #e0b84a;
+      --gold2: #d4a017;
+      --sage: #6b9b6e;
+      --ink: #1a1508;
+      --radius: 16px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, sans-serif;
-      background: radial-gradient(1200px 600px at 20% -10%, #243028 0%, var(--bg) 55%);
-      color: var(--paper); min-height: 100vh; line-height: 1.5;
+      background: var(--bg);
+      color: var(--paper);
+      min-height: 100vh;
+      line-height: 1.5;
     }
-    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(800px 400px at 10% -10%, rgba(212,160,23,0.12), transparent 60%),
+        radial-gradient(600px 360px at 100% 20%, rgba(107,155,110,0.1), transparent 55%);
+    }
+    .wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; padding: 28px 18px 80px; }
     .badge {
-      display: inline-block; font-size: 12px; font-weight: 700;
-      letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold);
-      border: 1px solid var(--line); background: var(--panel);
-      padding: 6px 10px; border-radius: 999px; margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold2); border: 1px solid var(--line); background: rgba(22,30,25,0.9);
+      padding: 6px 12px; border-radius: 999px; margin-bottom: 14px;
     }
-    h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0 0 8px; font-weight: 800; }
-    .lead { color: var(--muted); font-size: 1.05rem; margin: 0 0 28px; max-width: 36em; }
+    h1 { font-size: clamp(2rem, 6vw, 2.6rem); margin: 0 0 10px; font-weight: 800; letter-spacing: -0.02em; }
+    .lead { color: var(--muted); font-size: 1.05rem; margin: 0 0 22px; max-width: 34em; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    a.btn, button.btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; font-weight: 800; border-radius: 14px;
+      padding: 14px 20px; font-size: 0.95rem; border: 1px solid transparent;
+      cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s;
+    }
+    a.btn:active, button.btn:active { transform: scale(0.97); }
+    a.btn-primary {
+      background: linear-gradient(180deg, #ebc34a, var(--gold2));
+      color: var(--ink); box-shadow: 0 8px 24px rgba(212,160,23,0.25);
+    }
+    a.btn-primary:hover { box-shadow: 0 10px 28px rgba(212,160,23,0.35); }
+    button.btn-ghost, a.btn-ghost {
+      background: transparent; color: var(--paper); border-color: var(--line);
+    }
+    .tabs {
+      display: flex; gap: 6px; padding: 4px; background: var(--panel);
+      border: 1px solid var(--line); border-radius: 14px; margin-bottom: 16px;
+    }
+    .tabs button {
+      flex: 1; border: 0; background: transparent; color: var(--muted);
+      font-weight: 700; font-size: 0.85rem; padding: 10px 8px; border-radius: 10px;
+      cursor: pointer; transition: background 0.15s, color 0.15s;
+    }
+    .tabs button.active { background: var(--panel2); color: var(--gold2); }
+    .panel { display: none; animation: fadeIn 0.25s ease; }
+    .panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
     .card {
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: 16px; padding: 22px; margin-bottom: 16px;
+      border-radius: var(--radius); padding: 18px; margin-bottom: 12px;
     }
-    .card h2 { margin: 0 0 10px; font-size: 1.1rem; font-weight: 700; }
-    .card p, .card li { color: var(--muted); margin: 0 0 10px; font-size: 0.95rem; }
-    .card ul { padding-left: 1.2em; margin: 0 0 8px; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-    @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+    .card h2 { margin: 0 0 8px; font-size: 1.05rem; font-weight: 800; }
+    .card p { color: var(--muted); margin: 0 0 8px; font-size: 0.92rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+    .chip {
+      border: 1px solid var(--line); background: var(--panel2); color: var(--paper);
+      border-radius: 999px; padding: 8px 12px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; transition: border-color 0.15s, background 0.15s;
+    }
+    .chip:hover, .chip.active { border-color: var(--gold2); color: var(--gold2); }
+    .chip-note {
+      min-height: 44px; color: var(--muted); font-size: 0.9rem; margin-top: 10px;
+      padding: 10px 12px; border-radius: 12px; background: var(--bg); border: 1px solid var(--line);
+    }
     .feat {
-      background: var(--bg); border: 1px solid var(--line);
-      border-radius: 12px; padding: 12px 14px; color: var(--paper); font-size: 0.9rem;
+      border: 1px solid var(--line); background: var(--panel2); border-radius: 12px;
+      margin-bottom: 8px; overflow: hidden;
     }
-    .feat strong { display: block; color: var(--gold); font-size: 0.8rem; margin-bottom: 4px; }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-    a.btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      text-decoration: none; font-weight: 800; border-radius: 12px;
-      padding: 14px 20px; font-size: 0.95rem; border: 1px solid transparent;
+    .feat-btn {
+      width: 100%; text-align: left; background: transparent; border: 0; color: var(--paper);
+      padding: 14px 14px; font-weight: 700; font-size: 0.92rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 10px;
     }
-    a.btn-primary { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-    .note {
-      font-size: 0.85rem; color: var(--muted); margin-top: 14px; padding-top: 12px;
-      border-top: 1px solid var(--line);
+    .feat-btn span.tag { color: var(--gold2); font-size: 0.75rem; font-weight: 800; }
+    .feat-btn .chev { color: var(--muted); transition: transform 0.2s; }
+    .feat.open .feat-btn .chev { transform: rotate(90deg); color: var(--gold2); }
+    .feat-body {
+      display: none; padding: 0 14px 14px; color: var(--muted); font-size: 0.88rem;
     }
+    .feat.open .feat-body { display: block; }
     .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
-    .steps li { position: relative; padding-left: 36px; margin-bottom: 14px; color: var(--muted); }
+    .steps li {
+      position: relative; padding-left: 40px; margin-bottom: 14px; color: var(--muted); font-size: 0.92rem;
+    }
     .steps li::before {
       counter-increment: step; content: counter(step);
-      position: absolute; left: 0; top: 0; width: 24px; height: 24px;
-      border-radius: 8px; background: var(--bg); border: 1px solid var(--line);
-      color: var(--gold); font-size: 12px; font-weight: 800;
+      position: absolute; left: 0; top: 0; width: 28px; height: 28px;
+      border-radius: 10px; background: var(--bg); border: 1px solid var(--line);
+      color: var(--gold2); font-size: 12px; font-weight: 800;
       display: flex; align-items: center; justify-content: center;
     }
-    footer { margin-top: 28px; color: var(--muted); font-size: 0.8rem; text-align: center; }
-    code { background: var(--bg); padding: 2px 6px; border-radius: 6px; font-size: 0.85em; color: var(--sage); }
+    .check { list-style: none; padding: 0; margin: 0; }
+    .check li {
+      display: flex; gap: 10px; align-items: flex-start; color: var(--muted);
+      font-size: 0.9rem; margin-bottom: 10px;
+    }
+    .check li::before {
+      content: "✓"; color: var(--sage); font-weight: 800; flex-shrink: 0;
+    }
+    footer {
+      margin-top: 28px; color: var(--muted); font-size: 0.78rem; text-align: center;
+    }
+    .pulse {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--sage);
+      box-shadow: 0 0 0 0 rgba(107,155,110,0.5); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(107,155,110,0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(107,155,110,0); }
+      100% { box-shadow: 0 0 0 0 rgba(107,155,110,0); }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="badge">Android · Test build</div>
+    <div class="badge"><span class="pulse"></span> Android · Test build</div>
     <h1>SiloLink</h1>
     <p class="lead">
-      Agritech app for farmers, traders, storage, logistics and buyers.
-      Browse the market, post produce, manage storage, take jobs, chat, and more.
+      Your agritech companion — market, storage, jobs, logistics, chat and an AI helper.
+      Built for farmers, traders, drivers and buyers.
     </p>
 
-    <div class="card">
-      <h2>What SiloLink does</h2>
-      <div class="grid">
-        <div class="feat"><strong>Market</strong> List and buy produce with clear status.</div>
-        <div class="feat"><strong>Storage</strong> Request and track storage facilities.</div>
-        <div class="feat"><strong>Jobs &amp; logistics</strong> Open jobs, hauls, driver flow.</div>
-        <div class="feat"><strong>Chat &amp; status</strong> Message partners; share updates.</div>
-        <div class="feat"><strong>Roles</strong> Farmer, retailer, logistics, technician, and more.</div>
-        <div class="feat"><strong>AI helper</strong> Ask SiloLink for tips and navigation help.</div>
+    <div class="cta-row">
+      <a class="btn btn-primary" id="btn-download"
+         href="https://drive.google.com/file/d/1X5MAgSgLGtotwkQUMo3Pzaj2Cniu6HVa/view?usp=drivesdk"
+         target="_blank" rel="noopener">
+        Download for Android
+      </a>
+      <button type="button" class="btn btn-ghost" id="btn-explore">Explore features</button>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button type="button" class="active" data-tab="features">Features</button>
+      <button type="button" data-tab="install">Install</button>
+      <button type="button" data-tab="try">Try this</button>
+    </div>
+
+    <div id="panel-features" class="panel active">
+      <div class="card">
+        <h2>Who is it for?</h2>
+        <p>Tap a role to see what you can do.</p>
+        <div class="chips" id="role-chips">
+          <button type="button" class="chip active" data-role="farmer">Farmer</button>
+          <button type="button" class="chip" data-role="trader">Trader / buyer</button>
+          <button type="button" class="chip" data-role="driver">Logistics</button>
+          <button type="button" class="chip" data-role="storage">Storage</button>
+          <button type="button" class="chip" data-role="tech">Technician</button>
+        </div>
+        <div class="chip-note" id="role-note">List produce, track orders, request storage, and chat with buyers.</div>
+      </div>
+
+      <div class="card">
+        <h2>What you can do</h2>
+        <p>Tap a card to expand.</p>
+        <div class="feat open">
+          <button type="button" class="feat-btn"><span><span class="tag">MARKET</span> · Buy &amp; sell produce</span><span class="chev">›</span></button>
+          <div class="feat-body">Browse listings, place orders, and follow status from request to delivery or pickup.</div>
+        </div>
+        <div class="feat">
+          <button type="button" class="feat-btn"><span><span class="tag">JOBS</span> · Work &amp; haul</span><span class="chev">›</span></button>
+          <div class="feat-body">Open jobs on the board. Logistics and other roles accept the jobs that match them.</div>
+        </div>
+        <div class="feat">
+          <button type="button" class="feat-btn"><span><span class="tag">STORAGE</span> · Facilities</span><span class="chev">›</span></button>
+          <div class="feat-body">Request storage, manage facilities, and keep produce tracked in one place.</div>
+        </div>
+        <div class="feat">
+          <button type="button" class="feat-btn"><span><span class="tag">CHAT</span> · Stay connected</span><span class="chev">›</span></button>
+          <div class="feat-body">Message partners, share status updates, and keep order talks in-app.</div>
+        </div>
+        <div class="feat">
+          <button type="button" class="feat-btn"><span><span class="tag">AI</span> · Ask SiloLink</span><span class="chev">›</span></button>
+          <div class="feat-body">Get help navigating the app and practical tips. Live web search is planned for a later update.</div>
+        </div>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Download test APK</h2>
-      <p>
-        This is a <strong>pre-Play Store</strong> Android build for testing.
-        Source code is private. Only the install file is shared.
-      </p>
-      <div class="actions">
-        <a class="btn btn-primary" id="btn-download"
-           href="https://drive.google.com/file/d/1X5MAgSgLGtotwkQUMo3Pzaj2Cniu6HVa/view?usp=drivesdk"
-           target="_blank" rel="noopener">
-          Download SiloLink APK
-        </a>
+    <div id="panel-install" class="panel">
+      <div class="card">
+        <h2>Install on Android</h2>
+        <ol class="steps">
+          <li>Tap <strong>Download for Android</strong> above.</li>
+          <li>Save the APK when your browser asks.</li>
+          <li>Open the file. Allow install from this source if Android asks.</li>
+          <li>Open SiloLink — sign in or browse without an account.</li>
+        </ol>
+        <p style="margin-top:12px">No special account is required just to download. Use any phone browser.</p>
+        <div class="cta-row" style="margin-bottom:0;margin-top:16px">
+          <a class="btn btn-primary"
+             href="https://drive.google.com/file/d/1X5MAgSgLGtotwkQUMo3Pzaj2Cniu6HVa/view?usp=drivesdk"
+             target="_blank" rel="noopener">Download for Android</a>
+        </div>
       </div>
-      <p class="note">
-        File name is usually <code>app-SiloLink.apk</code>.
-        After download, allow <strong>Install unknown apps</strong> if Android asks, then open the file to install.
-        If the button does not open Drive yet, paste your Google Drive share link into this page (replace DRIVE_LINK_PLACEHOLDER).
-      </p>
     </div>
 
-    <div class="card">
-      <h2>Install on Android</h2>
-      <ol class="steps">
-        <li>Tap <strong>Download SiloLink APK</strong> and save the file.</li>
-        <li>Open the downloaded APK from notifications or Files.</li>
-        <li>Allow install from this source if prompted.</li>
-        <li>Open SiloLink — sign in or use <strong>Browse without account</strong>.</li>
-        <li>Try market, feed upload, chat, jobs, and pull-to-refresh.</li>
-      </ol>
-    </div>
-
-    <div class="card">
-      <h2>What to test</h2>
-      <ul>
-        <li>Feed: pick photo/video, add caption, Share — real progress and cancel</li>
-        <li>Market, chats, jobs, notifications — pull down to refresh</li>
-        <li>Offline: open media you already viewed while online</li>
-        <li>Friendly error messages (no long technical codes)</li>
-      </ul>
+    <div id="panel-try" class="panel">
+      <div class="card">
+        <h2>Quick things to try</h2>
+        <ul class="check">
+          <li>Open Market and pull down to refresh</li>
+          <li>Create a feed post: pick media, add a caption, then Share</li>
+          <li>Open Jobs / Notifications and pull to refresh</li>
+          <li>View a photo online, then try again offline</li>
+          <li>Say hi to the AI helper from the app</li>
+        </ul>
+      </div>
     </div>
 
     <footer>
-      SiloLink test site · Not listed on Google Play yet · For testing before production
+      SiloLink test build · Not on Google Play yet · Share this page with testers
     </footer>
   </div>
+
+  <script>
+    const roles = {
+      farmer: "List produce, track orders, request storage, and chat with buyers.",
+      trader: "Browse the market, place orders, follow delivery or pickup, and message sellers.",
+      driver: "See open haul jobs, accept work that matches logistics, and update trip status.",
+      storage: "Handle storage requests and facility tools when your role is approved.",
+      tech: "Find field or technician jobs on the board and complete assigned work."
+    };
+
+    document.querySelectorAll(".tabs button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".tabs button").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    document.getElementById("btn-explore").addEventListener("click", () => {
+      document.querySelector('.tabs button[data-tab="features"]').click();
+      document.getElementById("panel-features").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.querySelectorAll("#role-chips .chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll("#role-chips .chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        document.getElementById("role-note").textContent = roles[chip.dataset.role] || "";
+      });
+    });
+
+    document.querySelectorAll(".feat").forEach((feat) => {
+      feat.querySelector(".feat-btn").addEventListener("click", () => {
+        const open = feat.classList.contains("open");
+        document.querySelectorAll(".feat").forEach((f) => f.classList.remove("open"));
+        if (!open) feat.classList.add("open");
+      });
+    });
+  </script>
 </body>
 </html>
