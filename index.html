@@ -4,22 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SiloLink — Farm to Market, Storage & Logistics</title>
-  <meta name="description" content="SiloLink connects farmers, buyers, storage, logistics and more. Buy, sell, store, haul, earn tokens and referrals." />
+  <meta name="description" content="SiloLink connects farmers, buyers, storage, logistics, agents and more. Buy, sell, store, haul, earn tokens and grow with referrals." />
   <link rel="icon" href="assets/app_icon.png" />
   <style>
     :root {
-      --bg: #0f1410;
-      --panel: #1a221c;
-      --panel2: #243028;
-      --gold: #c9a227;
-      --gold-dim: #a68520;
-      --paper: #f4f0e6;
-      --muted: #a8b5a8;
-      --sage: #6b8f71;
-      --rust: #c45c3e;
-      --line: rgba(201,162,39,0.25);
-      --radius: 16px;
-      --shadow: 0 12px 40px rgba(0,0,0,0.35);
+      --bg: #0c120e;
+      --panel: #162019;
+      --panel2: #1e2b22;
+      --gold: #d4af37;
+      --gold2: #f0d06a;
+      --paper: #f6f1e6;
+      --muted: #9aaf9e;
+      --line: rgba(212,175,55,0.28);
+      --radius: 18px;
+      --shadow: 0 16px 50px rgba(0,0,0,0.4);
       --font: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
     }
     * { box-sizing: border-box; }
@@ -27,127 +25,124 @@
     body {
       margin: 0;
       font-family: var(--font);
-      background: radial-gradient(1200px 600px at 10% -10%, #2a3a2c 0%, var(--bg) 55%);
+      background:
+        radial-gradient(900px 500px at 85% 0%, rgba(212,175,55,0.12), transparent 55%),
+        radial-gradient(800px 480px at 0% 20%, rgba(60,120,80,0.18), transparent 50%),
+        var(--bg);
       color: var(--paper);
-      line-height: 1.5;
+      line-height: 1.55;
     }
     a { color: var(--gold); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a:hover { color: var(--gold2); }
     .wrap { width: min(1120px, 92%); margin: 0 auto; }
     header {
       position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(15,20,16,0.82);
+      backdrop-filter: blur(14px);
+      background: rgba(12,18,14,0.88);
       border-bottom: 1px solid var(--line);
     }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 0; gap: 12px;
+      padding: 12px 0; gap: 10px;
     }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: 0.02em; }
-    .brand img { width: 40px; height: 40px; border-radius: 10px; }
-    .nav links, .nav-links { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
-    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 600; }
-    .nav-links a:hover { color: var(--gold); text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; object-fit: cover; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 12px; }
+    .nav-links a { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .nav-links a:hover { color: var(--gold); }
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-      border: none; border-radius: 999px; padding: 12px 20px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: none; border-radius: 999px; padding: 12px 18px;
       font-weight: 800; cursor: pointer; font-size: 14px;
-      transition: transform .15s ease, background .15s ease;
+      transition: transform .15s ease, box-shadow .15s ease;
     }
-    .btn:hover { transform: translateY(-1px); text-decoration: none; }
-    .btn-gold { background: var(--gold); color: #1a1405; }
-    .btn-gold:hover { background: #ddb82e; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      color: #1a1405; box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+    }
     .btn-outline {
       background: transparent; color: var(--paper);
       border: 1px solid var(--line);
     }
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
     .hero {
-      padding: 48px 0 28px;
-      display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 28px; align-items: center;
+      padding: 40px 0 24px;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;
     }
     @media (max-width: 860px) {
       .hero { grid-template-columns: 1fr; }
       .nav-links { display: none; }
     }
     .hero h1 {
-      font-size: clamp(28px, 4vw, 44px);
-      line-height: 1.12; margin: 0 0 12px;
+      font-size: clamp(28px, 4.2vw, 46px);
+      line-height: 1.1; margin: 0 0 12px;
     }
-    .hero p { color: var(--muted); font-size: 17px; margin: 0 0 20px; max-width: 52ch; }
+    .hero p { color: var(--muted); font-size: 16px; margin: 0 0 18px; max-width: 48ch; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .badge {
-      display: inline-block; font-size: 12px; font-weight: 700;
-      color: var(--gold); background: rgba(201,162,39,0.12);
+      display: inline-block; font-size: 12px; font-weight: 800;
+      color: var(--gold); background: rgba(212,175,55,0.1);
       border: 1px solid var(--line); border-radius: 999px;
-      padding: 4px 10px; margin-bottom: 12px;
+      padding: 5px 12px; margin-bottom: 12px; letter-spacing: 0.04em;
     }
     .phone-card {
-      background: linear-gradient(160deg, var(--panel2), var(--panel));
+      background: linear-gradient(165deg, var(--panel2), var(--panel));
       border: 1px solid var(--line); border-radius: 24px;
-      padding: 16px; box-shadow: var(--shadow);
+      padding: 14px; box-shadow: var(--shadow);
     }
     .phone-card img {
       width: 100%; border-radius: 16px; display: block;
-      background: #111;
+      aspect-ratio: 1 / 1; object-fit: cover; background: #111;
     }
     .dots { display: flex; gap: 8px; justify-content: center; margin-top: 12px; }
     .dot {
       width: 8px; height: 8px; border-radius: 50%;
       background: #3a4a3c; border: none; cursor: pointer; padding: 0;
     }
-    .dot.active { background: var(--gold); }
-    section { padding: 36px 0; }
-    section h2 {
-      font-size: 26px; margin: 0 0 8px;
-    }
-    section .sub { color: var(--muted); margin: 0 0 20px; max-width: 60ch; }
-    .grid3 {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
-    }
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    @media (max-width: 860px) {
-      .grid3, .grid2 { grid-template-columns: 1fr; }
-    }
+    .dot.active { background: var(--gold); box-shadow: 0 0 0 3px rgba(212,175,55,0.2); }
+    section { padding: 34px 0; }
+    section h2 { font-size: 26px; margin: 0 0 8px; }
+    section .sub { color: var(--muted); margin: 0 0 18px; max-width: 62ch; }
+    .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 860px) { .grid3 { grid-template-columns: 1fr; } }
     .card {
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 16px 16px 14px;
-      transition: border-color .15s ease, transform .15s ease;
+      border-radius: var(--radius); padding: 16px;
+      transition: border-color .15s, transform .15s;
     }
-    .card:hover, .card.active {
-      border-color: var(--gold); transform: translateY(-2px);
-    }
+    .card:hover { border-color: var(--gold); transform: translateY(-2px); }
     .card h3 { margin: 0 0 6px; font-size: 16px; }
     .card p { margin: 0; color: var(--muted); font-size: 14px; }
     .icon-pill {
-      width: 36px; height: 36px; border-radius: 10px;
+      width: 34px; height: 34px; border-radius: 10px;
       display: grid; place-items: center;
-      background: rgba(201,162,39,0.15); color: var(--gold);
-      font-weight: 800; margin-bottom: 10px; font-size: 14px;
+      background: rgba(212,175,55,0.15); color: var(--gold);
+      font-weight: 800; margin-bottom: 10px; font-size: 13px;
     }
-    .roles {
-      display: grid; grid-template-columns: 200px 1fr; gap: 14px;
-    }
-    @media (max-width: 860px) {
-      .roles { grid-template-columns: 1fr; }
-    }
-    .role-list { display: flex; flex-direction: column; gap: 8px; }
+    .roles { display: grid; grid-template-columns: 210px 1fr; gap: 12px; }
+    @media (max-width: 860px) { .roles { grid-template-columns: 1fr; } }
+    .role-list { display: flex; flex-direction: column; gap: 8px; max-height: 520px; overflow: auto; padding-right: 4px; }
     .role-btn {
       text-align: left; background: var(--panel); color: var(--paper);
       border: 1px solid var(--line); border-radius: 12px;
-      padding: 12px 12px; cursor: pointer; font-weight: 700; font-size: 13px;
+      padding: 12px; cursor: pointer; font-weight: 700; font-size: 13px;
     }
     .role-btn.active, .role-btn:hover {
       border-color: var(--gold); background: var(--panel2); color: var(--gold);
     }
     .role-panel {
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 18px; min-height: 220px;
+      border-radius: var(--radius); padding: 18px; min-height: 280px;
     }
-    .role-panel h3 { margin: 0 0 8px; color: var(--gold); }
-    .role-panel ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-    .role-panel li { margin: 6px 0; }
+    .role-panel h3 { margin: 0 0 6px; color: var(--gold); font-size: 20px; }
+    .role-panel .tag {
+      display: inline-block; font-size: 11px; font-weight: 800;
+      color: var(--gold2); border: 1px solid var(--line);
+      border-radius: 999px; padding: 3px 8px; margin: 0 6px 10px 0;
+    }
+    .role-panel h4 { margin: 14px 0 6px; font-size: 14px; color: var(--paper); }
+    .role-panel ul { margin: 0; padding-left: 18px; color: var(--muted); }
+    .role-panel li { margin: 5px 0; }
     .flow-steps {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
       counter-reset: step;
@@ -155,19 +150,19 @@
     @media (max-width: 860px) { .flow-steps { grid-template-columns: 1fr 1fr; } }
     .step {
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 14px; position: relative;
+      border-radius: var(--radius); padding: 14px;
     }
     .step::before {
       counter-increment: step;
       content: counter(step);
       display: inline-grid; place-items: center;
-      width: 28px; height: 28px; border-radius: 50%;
+      width: 26px; height: 26px; border-radius: 50%;
       background: var(--gold); color: #1a1405; font-weight: 800;
-      font-size: 13px; margin-bottom: 8px;
+      font-size: 12px; margin-bottom: 8px;
     }
     .step h4 { margin: 0 0 4px; font-size: 14px; }
     .step p { margin: 0; color: var(--muted); font-size: 13px; }
-    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
     .tab {
       background: transparent; border: 1px solid var(--line);
       color: var(--muted); border-radius: 999px; padding: 8px 14px;
@@ -175,48 +170,49 @@
     }
     .tab.active { background: var(--gold); color: #1a1405; border-color: var(--gold); }
     .panel-box {
-      background: var(--panel); border: 1px solid var(--line);
-      border-radius: var(--radius); padding: 18px;
+      background: transparent;
     }
     .panel-box[hidden] { display: none !important; }
-    .token-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-    }
+    .token-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     @media (max-width: 860px) { .token-grid { grid-template-columns: 1fr; } }
     .token-card {
-      background: var(--panel2); border: 1px solid var(--line);
+      background: var(--panel); border: 1px solid var(--line);
       border-radius: 14px; padding: 14px;
     }
-    .token-card strong { color: var(--gold); display: block; margin-bottom: 4px; }
+    .token-card strong { color: var(--gold); display: block; margin-bottom: 6px; font-size: 15px; }
+    .token-card p { margin: 0; color: var(--muted); font-size: 14px; }
     .gallery {
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
     }
     @media (max-width: 860px) { .gallery { grid-template-columns: 1fr 1fr; } }
     .gallery figure {
       margin: 0; background: var(--panel); border: 1px solid var(--line);
-      border-radius: 14px; overflow: hidden;
+      border-radius: 16px; overflow: hidden;
     }
-    .gallery img { width: 100%; display: block; aspect-ratio: 1; object-fit: cover; }
-    .gallery figcaption {
-      padding: 8px 10px; font-size: 12px; color: var(--muted); font-weight: 600;
+    .gallery img {
+      width: 100%; display: block; aspect-ratio: 1; object-fit: cover;
+      transition: transform .35s ease;
     }
+    .gallery figure:hover img { transform: scale(1.03); }
     .download-box {
-      background: linear-gradient(135deg, #2a3a2c, var(--panel));
-      border: 1px solid var(--line); border-radius: 20px;
-      padding: 24px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px;
+      background: linear-gradient(135deg, #243528, var(--panel));
+      border: 1px solid var(--line); border-radius: 22px;
+      padding: 22px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 16px;
       align-items: center; box-shadow: var(--shadow);
     }
     @media (max-width: 860px) { .download-box { grid-template-columns: 1fr; } }
     .download-box h2 { margin: 0 0 8px; }
     .download-box p { margin: 0 0 14px; color: var(--muted); }
-    .note {
-      font-size: 12px; color: var(--muted); margin-top: 10px;
-    }
+    .note { font-size: 12px; color: var(--muted); margin-top: 10px; }
     footer {
-      border-top: 1px solid var(--line); padding: 22px 0 36px;
+      border-top: 1px solid var(--line); padding: 20px 0 34px;
       color: var(--muted); font-size: 13px;
     }
     footer .wrap { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; }
+    .shot-note {
+      background: rgba(212,175,55,0.08); border: 1px dashed var(--line);
+      border-radius: 14px; padding: 14px; color: var(--muted); font-size: 14px; margin-top: 12px;
+    }
   </style>
 </head>
 <body>
@@ -229,9 +225,10 @@
       <nav class="nav-links">
         <a href="#how">How it works</a>
         <a href="#roles">Roles</a>
-        <a href="#flows">Buy & sell</a>
+        <a href="#storefront">Storefront</a>
+        <a href="#flows">Flows</a>
         <a href="#rewards">Rewards</a>
-        <a href="#gallery">App look</a>
+        <a href="#gallery">Gallery</a>
         <a href="#download">Download</a>
       </nav>
       <a class="btn btn-gold" href="#download">Get the app</a>
@@ -241,11 +238,11 @@
   <main class="wrap">
     <section class="hero" id="top">
       <div>
-        <div class="badge">Agriculture · Storage · Market · Logistics</div>
-        <h1>One app for produce, storage, jobs and trusted delivery</h1>
+        <div class="badge">AGRICULTURE · STORAGE · MARKET · LOGISTICS</div>
+        <h1>Connect farms, storage and buyers in one network</h1>
         <p>
-          SiloLink connects farmers, buyers, storage managers, drivers, technicians and more.
-          List produce, buy with escrow, request storage, haul goods, earn tokens and grow with referrals.
+          SiloLink helps you list produce, buy with protected payment, store goods,
+          hire drivers, open a seller storefront, and earn rewards as the network grows.
         </p>
         <div class="hero-actions">
           <a class="btn btn-gold" href="#download">Download Android APK</a>
@@ -253,149 +250,144 @@
         </div>
       </div>
       <div class="phone-card">
-        <img id="heroSlide" src="assets/onboard_1.png" alt="SiloLink onboarding" />
+        <img id="heroSlide" src="assets/onboard_1.png" alt="SiloLink" />
         <div class="dots" id="heroDots"></div>
       </div>
     </section>
 
     <section id="how">
       <h2>How SiloLink works</h2>
-      <p class="sub">From field to buyer — with storage, logistics and wallet in one place.</p>
+      <p class="sub">Simple path from signup to trade, storage and delivery.</p>
       <div class="grid3">
         <div class="card">
           <div class="icon-pill">1</div>
-          <h3>Create your profile</h3>
-          <p>Sign up, verify, and request roles that match what you do — farmer, logistics, storage, company and more.</p>
+          <h3>Join & pick roles</h3>
+          <p>Create your account. Request the roles that match your work. Some roles need proof before tools unlock.</p>
         </div>
         <div class="card">
           <div class="icon-pill">2</div>
           <h3>Trade on the market</h3>
-          <p>List produce or buy from others. Pay with wallet or Paystack. Funds stay protected until delivery is confirmed.</p>
+          <p>List goods or buy from others. Pay from your wallet or card/transfer. Orders follow pickup, delivery or storage paths.</p>
         </div>
         <div class="card">
           <div class="icon-pill">3</div>
-          <h3>Move, store, earn</h3>
-          <p>Open jobs for drivers, use storage facilities, track orders, chat, and earn Silo tokens and referrals.</p>
+          <h3>Move, store & earn</h3>
+          <p>Drivers take haul jobs. Storage holds produce. Tokens and referrals reward real activity on the platform.</p>
         </div>
       </div>
     </section>
 
     <section id="roles">
-      <h2>Every role — tap to explore</h2>
-      <p class="sub">Each role has its own tools in My Office. Select a role to see what they do on SiloLink.</p>
+      <h2>Roles — tap any role</h2>
+      <p class="sub">See what each role does, what is required, and what to do first inside the app. Admin is private and not listed here.</p>
       <div class="roles">
         <div class="role-list" id="roleList"></div>
         <div class="role-panel" id="rolePanel"></div>
       </div>
     </section>
 
+    <section id="storefront">
+      <h2>Seller storefront</h2>
+      <p class="sub">Your public shop inside SiloLink — so buyers can trust who they buy from.</p>
+      <div class="grid3">
+        <div class="card">
+          <h3>Open it</h3>
+          <p>From Profile or your seller tools, open <strong>Storefront</strong> / edit store. Buyers also reach it from your listings and after a purchase.</p>
+        </div>
+        <div class="card">
+          <h3>Design it</h3>
+          <p>Add a cover or logo, shop name, short bio, location and contact style that matches your brand. Keep photos clear and products up to date.</p>
+        </div>
+        <div class="card">
+          <h3>Sell from it</h3>
+          <p>Listings stay linked to you. Buyers can visit the store, browse your goods, and buy with the same protected checkout as the main market.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="flows">
-      <h2>Buy flow & sell flow</h2>
-      <p class="sub">Switch tabs to see how money, goods and logistics move.</p>
+      <h2>Buy, sell, logistics & storage</h2>
+      <p class="sub">Switch tabs to follow each path.</p>
       <div class="tabs" id="flowTabs">
-        <button class="tab active" data-flow="buy">Buy flow</button>
-        <button class="tab" data-flow="sell">Sell flow</button>
+        <button class="tab active" data-flow="buy">Buy</button>
+        <button class="tab" data-flow="sell">Sell</button>
         <button class="tab" data-flow="logistics">Logistics</button>
         <button class="tab" data-flow="storage">Storage</button>
       </div>
       <div class="panel-box" id="flowBuy">
         <div class="flow-steps">
-          <div class="step"><h4>Browse market</h4><p>Find produce by type, region and seller. Open a listing and set quantity.</p></div>
-          <div class="step"><h4>Choose delivery</h4><p>Self pickup, deliver to you, send to storage, or send to someone else.</p></div>
-          <div class="step"><h4>Pay safely</h4><p>Pay with wallet or Paystack. Money is held until the order path completes.</p></div>
-          <div class="step"><h4>Receive goods</h4><p>Track the order, confirm delivery or pickup, and complete the trade.</p></div>
+          <div class="step"><h4>Browse market</h4><p>Find produce, open a listing, choose quantity.</p></div>
+          <div class="step"><h4>Delivery option</h4><p>Self pickup, deliver to you, storage, or send to someone else.</p></div>
+          <div class="step"><h4>Pay</h4><p>Wallet or Paystack. Payment is confirmed before stock is fully committed.</p></div>
+          <div class="step"><h4>Receive</h4><p>Track the order and confirm when goods arrive or are collected.</p></div>
         </div>
       </div>
       <div class="panel-box" id="flowSell" hidden>
         <div class="flow-steps">
-          <div class="step"><h4>List produce</h4><p>Add product, quantity, price in naira, photos and location.</p></div>
-          <div class="step"><h4>Get orders</h4><p>Buyers place orders. You accept and prepare for pickup or dispatch.</p></div>
-          <div class="step"><h4>Hand off</h4><p>Buyer picks up, or a driver collects for delivery / storage.</p></div>
-          <div class="step"><h4>Get paid</h4><p>When delivery is confirmed, funds release toward your wallet balance.</p></div>
+          <div class="step"><h4>List goods</h4><p>Photos, quantity, price (naira), and location.</p></div>
+          <div class="step"><h4>Get orders</h4><p>Buyers order; you prepare for pickup or dispatch.</p></div>
+          <div class="step"><h4>Hand off</h4><p>Buyer collects, or a driver moves the goods.</p></div>
+          <div class="step"><h4>Receive funds</h4><p>After completion, proceeds move toward your wallet.</p></div>
         </div>
       </div>
       <div class="panel-box" id="flowLogistics" hidden>
         <div class="flow-steps">
-          <div class="step"><h4>Open job board</h4><p>See transport jobs from paid orders that need a driver.</p></div>
-          <div class="step"><h4>Accept a job</h4><p>Only logistics role can accept haul jobs. One driver per job.</p></div>
-          <div class="step"><h4>Pick up & move</h4><p>Collect goods, update status, use map tools while on the haul.</p></div>
-          <div class="step"><h4>Deliver</h4><p>Complete drop-off. Job closes and activity is recorded.</p></div>
+          <div class="step"><h4>Job board</h4><p>See open haul jobs from paid orders.</p></div>
+          <div class="step"><h4>Accept</h4><p>Logistics role only. One driver per job.</p></div>
+          <div class="step"><h4>Move goods</h4><p>Pickup, update status, deliver.</p></div>
+          <div class="step"><h4>Complete</h4><p>Job closes and shows in your activity.</p></div>
         </div>
       </div>
       <div class="panel-box" id="flowStorage" hidden>
         <div class="flow-steps">
-          <div class="step"><h4>Request storage</h4><p>Send produce to a facility or manage batches from your office.</p></div>
-          <div class="step"><h4>Facility accepts</h4><p>Storage managers handle intake and certified storage flows.</p></div>
-          <div class="step"><h4>Hold or list</h4><p>Keep goods in storage or convert batches toward market listings.</p></div>
-          <div class="step"><h4>Recall / release</h4><p>Recall via driver or self-pickup when you need the goods again.</p></div>
+          <div class="step"><h4>Request storage</h4><p>Send produce to a facility from the storage tools.</p></div>
+          <div class="step"><h4>Facility intake</h4><p>Storage manager accepts and tracks batches.</p></div>
+          <div class="step"><h4>Hold or sell</h4><p>Keep in store or list from certified stock where enabled.</p></div>
+          <div class="step"><h4>Recall</h4><p>Self-pickup or driver recall when you need the goods.</p></div>
         </div>
       </div>
     </section>
 
     <section id="rewards">
       <h2>Wallet, tokens & referrals</h2>
-      <p class="sub">Rewards are built to encourage real use of the marketplace and network growth.</p>
+      <p class="sub">How money and rewards work — clear and practical.</p>
       <div class="token-grid">
         <div class="token-card">
           <strong>Wallet (₦)</strong>
-          Top up like a betting wallet, pay for orders, receive seller proceeds, and withdraw when available.
+          <p>Top up your account, pay for market orders, receive seller proceeds, and withdraw when the app allows. Your balance is in naira.</p>
         </div>
         <div class="token-card">
           <strong>Silo Tokens</strong>
-          1 token ≈ ₦1 for offsets. Earn from activity (for example small % on transactions, feed posts, and promotions as configured).
+          <p>Tokens track rewards (about 1 token ≈ ₦1 for offsets). Use them to reduce part of a market purchase where the offset limit allows. Earn from real activity such as qualifying transactions and promotions set in the app.</p>
         </div>
         <div class="token-card">
           <strong>Referrals</strong>
-          Invite people with your link. After a referred user transacts, earn a fixed naira bonus — capped (e.g. first 5 successful joiners).
+          <p>Share your invite link. When someone you invite joins and completes a qualifying transaction, you can earn a fixed naira bonus. Bonuses are capped (for example the first 5 successful referrals).</p>
         </div>
       </div>
-      <div class="grid3" style="margin-top:14px">
-        <div class="card"><h3>Checkout choice</h3><p>Pay with wallet or Paystack. If wallet balance is low, top up or switch method.</p></div>
-        <div class="card"><h3>Token offset</h3><p>Use tokens to reduce part of a market purchase (subject to the app’s offset limit).</p></div>
-        <div class="card"><h3>Full history</h3><p>Wallet history shows top-ups, buys, sells, withdrawals and rewards in one place.</p></div>
-      </div>
-    </section>
-
-    <section id="features">
-      <h2>What else is inside the app</h2>
-      <p class="sub">Beyond buy and sell — community and operations tools.</p>
-      <div class="grid3">
-        <div class="card"><h3>Feed & status</h3><p>Share updates with media. Status-style posts with clear upload progress.</p></div>
-        <div class="card"><h3>Chat & groups</h3><p>Direct chat and groups with photo, description, admins, media tab and invite codes.</p></div>
-        <div class="card"><h3>My Office</h3><p>Role workspace for jobs, listings, activity and tools that match your verified roles.</p></div>
-        <div class="card"><h3>Maps & shipments</h3><p>Location tools for facilities, deliveries and tracking where the flow needs GPS.</p></div>
-        <div class="card"><h3>AI assistant</h3><p>In-app help for navigation and questions — with settings for name and voice options.</p></div>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card"><h3>Checkout</h3><p>Choose wallet or Paystack. If wallet funds are low, top up your account or pay another way.</p></div>
+        <div class="card"><h3>What tokens are for</h3><p>Offset part of a buy price, follow reward history, and benefit from activity promotions — not a separate “betting” product.</p></div>
+        <div class="card"><h3>History</h3><p>Wallet history lists top-ups, purchases, sales, withdrawals and rewards in one place.</p></div>
       </div>
     </section>
 
     <section id="gallery">
-      <h2>App look & onboarding</h2>
-      <p class="sub">Branding and onboarding art from the SiloLink app package.</p>
+      <h2>Brand & story visuals</h2>
+      <p class="sub">SiloLink identity and campaign art. Scroll the hero above for a live slideshow.</p>
       <div class="gallery">
-        <figure>
-          <img src="assets/app_icon.png" alt="App icon" />
-          <figcaption>App icon</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/splash_logo.png" alt="Splash logo" />
-          <figcaption>Splash logo</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/onboard_1.png" alt="Onboarding 1" />
-          <figcaption>Onboarding 1</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/onboard_2.png" alt="Onboarding 2" />
-          <figcaption>Onboarding 2</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/onboard_3.png" alt="Onboarding 3" />
-          <figcaption>Onboarding 3</figcaption>
-        </figure>
-        <figure>
-          <img src="assets/onboard_4.png" alt="Onboarding 4" />
-          <figcaption>Onboarding 4</figcaption>
-        </figure>
+        <figure><img src="assets/app_icon.png" alt="SiloLink" /></figure>
+        <figure><img src="assets/splash_logo.png" alt="SiloLink" /></figure>
+        <figure><img src="assets/onboard_1.png" alt="SiloLink" /></figure>
+        <figure><img src="assets/onboard_2.png" alt="SiloLink" /></figure>
+        <figure><img src="assets/onboard_3.png" alt="SiloLink" /></figure>
+        <figure><img src="assets/onboard_4.png" alt="SiloLink" /></figure>
+      </div>
+      <div class="shot-note" id="screens">
+        <strong style="color:var(--gold)">App screens (optional)</strong><br />
+        To show the real in-app UI (market, wallet, chat, office), take screenshots on your phone and upload them into
+        <code>assets/screens/</code> as <code>market.png</code>, <code>wallet.png</code>, <code>chat.png</code>, <code>office.png</code>.
+        Then we can wire a “Inside the app” row that uses those files. Brand art above is already included.
       </div>
     </section>
 
@@ -403,22 +395,14 @@
       <div class="download-box">
         <div>
           <h2>Download SiloLink</h2>
-          <p>
-            Get the latest Android test build. Install the APK, create an account, and try market, wallet, roles and logistics.
-            Replace the button link with your current Google Drive or release URL when you publish a new build.
-          </p>
-          <!-- TODO: paste your latest APK link below -->
+          <p>Get the Android test build, create an account, request your roles, and try market, wallet, storefront and logistics.</p>
           <a class="btn btn-gold" id="downloadBtn"
              href="https://drive.google.com/file/d/1X5MAgSgLGtotwkQUMo3Pzaj2Cniu6HVa/view?usp=drivesdk"
-             target="_blank" rel="noopener">
-            Download APK
-          </a>
-          <p class="note">
-            Android may ask you to allow installs from this source. This is a pre-Play Store test build.
-          </p>
+             target="_blank" rel="noopener">Download APK</a>
+          <p class="note">Android may ask permission to install from this source. Pre-Play Store test build.</p>
         </div>
         <div class="phone-card">
-          <img src="assets/splash_logo.png" alt="SiloLink logo" />
+          <img src="assets/splash_logo.png" alt="SiloLink" />
         </div>
       </div>
     </section>
@@ -426,19 +410,19 @@
 
   <footer>
     <div class="wrap">
-      <div>© <span id="year"></span> SiloLink · Farm to market infrastructure</div>
+      <div>© <span id="year"></span> SiloLink</div>
       <div><a href="#top">Back to top</a></div>
     </div>
   </footer>
 
   <script>
-    // Hero slideshow
     const slides = [
+      'assets/app_icon.png',
+      'assets/splash_logo.png',
       'assets/onboard_1.png',
       'assets/onboard_2.png',
       'assets/onboard_3.png',
-      'assets/onboard_4.png',
-      'assets/splash_logo.png'
+      'assets/onboard_4.png'
     ];
     let slideIndex = 0;
     const heroSlide = document.getElementById('heroSlide');
@@ -446,7 +430,6 @@
     slides.forEach((_, i) => {
       const b = document.createElement('button');
       b.className = 'dot' + (i === 0 ? ' active' : '');
-      b.setAttribute('aria-label', 'Slide ' + (i + 1));
       b.onclick = () => { slideIndex = i; showSlide(); };
       dotsWrap.appendChild(b);
     });
@@ -454,54 +437,96 @@
       heroSlide.src = slides[slideIndex];
       [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === slideIndex));
     }
-    setInterval(() => { slideIndex = (slideIndex + 1) % slides.length; showSlide(); }, 4000);
+    setInterval(() => { slideIndex = (slideIndex + 1) % slides.length; showSlide(); }, 4200);
 
-    // Roles explorer
     const roles = {
       farmer: {
         title: 'Farmer',
-        body: 'List harvests, sell on the market, request storage, and track orders.',
-        points: ['Create product listings with photos and quantity', 'Receive buy requests and complete handoff', 'Use storage and logistics when you need them', 'Earn wallet proceeds after successful delivery']
+        tags: ['List produce', 'Sell', 'Storage'],
+        about: 'Grow or harvest and sell through the market with optional storage and logistics.',
+        need: ['Account on SiloLink', 'Role request as Farmer (proof if the app asks)', 'Clear product photos and quantities'],
+        do: ['Request Farmer role and wait for approval if required', 'Create listings from Create / Market tools', 'Set price in naira, stock and location', 'Fulfil orders: pickup or hand to logistics', 'Optional: send goods to storage'],
+        store: 'Open your seller storefront from profile/seller tools; add name, bio and photo so buyers recognise your farm brand.'
       },
       buyer: {
         title: 'Buyer / Retailer',
-        body: 'Browse the marketplace, pay safely, and choose pickup or delivery.',
-        points: ['Search and filter listings', 'Pay with wallet or Paystack', 'Self-pickup or request delivery', 'Follow order status to completion']
+        tags: ['Buy', 'Wallet', 'Orders'],
+        about: 'Source produce for personal use, retail or bulk needs.',
+        need: ['Account', 'Funds in wallet or ability to pay via Paystack'],
+        do: ['Browse Market', 'Choose quantity and delivery style', 'Pay from wallet or Paystack', 'Track order until pickup/delivery completes'],
+        store: 'You shop other sellers’ storefronts from listings and post-purchase links.'
       },
       logistics: {
         title: 'Logistics / Driver',
-        body: 'Take haul jobs from the job board and move goods between points.',
-        points: ['View open transport jobs', 'Accept jobs for your role only', 'Update progress and complete delivery', 'Jobs leave the board once accepted']
+        tags: ['Jobs', 'Haul', 'Deliver'],
+        about: 'Move goods between sellers, buyers and storage.',
+        need: ['Logistics role approved', 'Reliable transport', 'Phone for status updates'],
+        do: ['Open Job board', 'Accept only logistics jobs', 'Pick up, update status, deliver', 'Completed jobs appear in activity'],
+        store: 'Not required; your work is job-based.'
+      },
+      agent: {
+        title: 'Agent',
+        tags: ['Field', 'Verification', 'Support'],
+        about: 'Support on-ground checks, user guidance and role verification workflows where the app assigns agent tasks.',
+        need: ['Agent role request and approval', 'Ability to visit locations when required'],
+        do: ['Complete agent tasks from office/jobs when assigned', 'Help verify farms, facilities or users as directed', 'Report outcomes in the app', 'Stay separate from pure driver haul jobs'],
+        store: 'Not required unless you also sell.'
       },
       storage: {
         title: 'Storage manager',
-        body: 'Run facility intake, batches and storage requests.',
-        points: ['Manage facility profile and location', 'Accept storage requests', 'Track batches and releases', 'Support certified storage flows']
+        tags: ['Facility', 'Batches', 'Intake'],
+        about: 'Run a storage facility: intake, hold and release produce.',
+        need: ['Storage role + facility details/location', 'Approval of facility where required'],
+        do: ['Complete facility profile', 'Accept storage requests', 'Manage batches and releases', 'Support recall / certified flows'],
+        store: 'Facility identity shows on admin/ops views; keep location accurate.'
       },
       technician: {
         title: 'Field technician',
-        body: 'Take technician-type jobs from the board when assigned to that role.',
-        points: ['See role-matched jobs', 'Accept and complete field work', 'Keep activity in My Office', 'Separate from pure logistics hauls']
+        tags: ['Service jobs', 'Field work'],
+        about: 'Handle technician-type service jobs (not the same as driving hauls).',
+        need: ['Technician role approved', 'Skills matching posted jobs'],
+        do: ['Open jobs that match technician work', 'Accept and complete field tasks', 'Log activity in My Office'],
+        store: 'Optional if you also offer paid services as listings.'
       },
       exporter: {
         title: 'Exporter',
-        body: 'Handle export-oriented listings and document tools for trade.',
-        points: ['Export market paths', 'Document library for export needs', 'Coordinate shipments', 'Work with logistics and storage']
+        tags: ['Trade', 'Documents', 'Ship'],
+        about: 'Move produce toward export paths with documents and coordinated logistics.',
+        need: ['Exporter role', 'Document readiness', 'Link to logistics/storage as needed'],
+        do: ['Use exporter tools and document areas', 'Coordinate orders and shipments', 'Keep compliance documents organised'],
+        store: 'Build a professional storefront for trade partners to recognise your export brand.'
       },
       company: {
         title: 'Company / Processor',
-        body: 'Operate as a registered company with facility location and bulk needs.',
-        points: ['Company profile and location', 'Bulk and processing related flows', 'Hire logistics and storage', 'Visible to admin facilities when approved']
+        tags: ['Business', 'Bulk', 'Facility'],
+        about: 'Operate as a registered company or processing outfit.',
+        need: ['Company role + business/facility info', 'Approval where required'],
+        do: ['Complete company profile and location', 'Buy bulk or process inflows', 'Hire logistics and storage as needed'],
+        store: 'Use storefront for B2B presence and product lines.'
       },
       landowner: {
         title: 'Landowner',
-        body: 'Present land opportunities and related listings from your workspace.',
-        points: ['Land-oriented tools in office', 'Share location details', 'Connect with interested parties', 'Keep profile roles up to date']
+        tags: ['Land', 'Lease'],
+        about: 'Present land for agricultural use or partnership.',
+        need: ['Landowner role', 'Clear location and land details'],
+        do: ['Open land tools in office', 'Publish land information', 'Respond to interested parties via chat/orders as enabled'],
+        store: 'Optional profile branding for trust.'
       },
       investor: {
         title: 'Investor',
-        body: 'Follow opportunities and activity relevant to investment-style participation.',
-        points: ['Role workspace entry points', 'Review market and campaigns where enabled', 'Track related activity', 'Use chat and office tools']
+        tags: ['Opportunities', 'Network'],
+        about: 'Follow agricultural opportunities and network activity on the platform.',
+        need: ['Investor role where offered'],
+        do: ['Use investor workspace entries', 'Review market and campaigns when available', 'Connect through chat and office tools'],
+        store: 'Not required.'
+      },
+      aggregator: {
+        title: 'Aggregator',
+        tags: ['Collect', 'Bulk', 'Network'],
+        about: 'Pool produce from multiple farmers and sell or move in larger volumes.',
+        need: ['Aggregator role approval', 'Network of supply'],
+        do: ['Collect or list aggregated stock', 'Use market and logistics at scale', 'Coordinate with farmers and buyers'],
+        store: 'Strong storefront helps buyers trust your aggregated supply.'
       }
     };
 
@@ -520,18 +545,17 @@
     });
     function renderRole(key) {
       const r = roles[key];
-      rolePanel.innerHTML = '<h3>' + r.title + '</h3><p style="color:var(--muted);margin:0 0 8px">' + r.body + '</p><ul>' +
-        r.points.map(p => '<li>' + p + '</li>').join('') + '</ul>';
+      rolePanel.innerHTML =
+        '<h3>' + r.title + '</h3>' +
+        r.tags.map(t => '<span class="tag">' + t + '</span>').join('') +
+        '<p style="color:var(--muted);margin:0 0 4px">' + r.about + '</p>' +
+        '<h4>Requirements</h4><ul>' + r.need.map(x => '<li>' + x + '</li>').join('') + '</ul>' +
+        '<h4>What to do in the app</h4><ul>' + r.do.map(x => '<li>' + x + '</li>').join('') + '</ul>' +
+        '<h4>Storefront</h4><p style="color:var(--muted);margin:0">' + r.store + '</p>';
     }
     renderRole('farmer');
 
-    // Flow tabs
-    const tabMap = {
-      buy: 'flowBuy',
-      sell: 'flowSell',
-      logistics: 'flowLogistics',
-      storage: 'flowStorage'
-    };
+    const tabMap = { buy: 'flowBuy', sell: 'flowSell', logistics: 'flowLogistics', storage: 'flowStorage' };
     document.querySelectorAll('#flowTabs .tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('#flowTabs .tab').forEach(t => t.classList.remove('active'));
@@ -540,7 +564,6 @@
         document.getElementById(tabMap[tab.dataset.flow]).hidden = false;
       });
     });
-
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
